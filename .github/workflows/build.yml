@@ -1,7 +1,7 @@
 name: Compilar Grayjay
 
 on:
-  workflow_dispatch: # Esto permite ejecutar la compilación con un botón manual
+  workflow_dispatch:
 
 jobs:
   build:
@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Clonar el código
       uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
 
     - name: Configurar Java 17
       uses: actions/setup-java@v4
@@ -28,3 +30,4 @@ jobs:
       with:
         name: Grayjay-APK
         path: '**/*.apk'
+        
